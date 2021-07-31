@@ -1,10 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
+import TitleText from "./TitleText";
 
 const Header = () => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.header}>Choice Makr</Text>
+			<TitleText style={styles.header}>Choice Makr</TitleText>
 		</View>
 	);
 };
@@ -15,10 +16,6 @@ const styles = StyleSheet.create({
 		paddingTop: 50,
 		paddingBottom: 10,
 		alignItems: "center",
-	},
-	header: {
-		fontSize: 24,
-		fontWeight: "bold",
 	},
 });
 
