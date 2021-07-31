@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import StartScreen from "./screens/StartScreen";
-
 import Header from "./components/Header";
 
 export default function App() {
@@ -14,7 +13,7 @@ export default function App() {
 	return (
 		<View style={styles.appContainer}>
 			<Header />
-			<StartScreen onSubmit={onSubmitChoiceHandler} />
+			<StartScreen choices={choices} onSubmit={onSubmitChoiceHandler} />
 		</View>
 	);
 }

@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, StyleSheet } from "react-native";
+import {
+	View,
+	Text,
+	TextInput,
+	Button,
+	StyleSheet,
+	ScrollView,
+} from "react-native";
+import TitleText from "../components/TitleText";
 
 const StartScreen = props => {
 	const [enteredChoice, setEnteredChoice] = useState("");
@@ -9,28 +17,48 @@ const StartScreen = props => {
 	};
 
 	const onPressHandler = () => {
-		props.onSubmit(enteredChoice);
+		if (enteredChoice.trim() === "") {
+			return;
+		}
+
+		const data = {
+			id: Math.random(),
+			text: enteredChoice,
+		};
+
+		props.onSubmit(data);
+		setEnteredChoice("");
 	};
 
 	return (
-		<View style={styles.container}>
-			<View style={styles.textInputContainer}>
-				<TextInput
-					style={styles.textInput}
-					value={enteredChoice}
-					onChangeText={onChangeTextHandler}
-					placeholder="Enter choices"
-				/>
+		<View>
+			<View style={styles.userInputContainer}>
+				<View style={styles.textInputContainer}>
+					<TextInput
+						style={styles.textInput}
+						value={enteredChoice}
+						onChangeText={onChangeTextHandler}
+						placeholder="Enter choices"
+					/>
+				</View>
+				<View style={styles.button}>
+					<Button title="Enter" color="#87CEEB" onPress={onPressHandler} />
+				</View>
 			</View>
-			<View style={styles.button}>
-				<Button title="Enter" color="#87CEEB" onPress={onPressHandler} />
+			<View>
+				<TitleText>Choices</TitleText>
+				<ScrollView>
+					{props.choices.map(choice => (
+						<Text key={choice.id}>{choice.text}</Text>
+					))}
+				</ScrollView>
 			</View>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
-	container: {
+	userInputContainer: {
 		alignItems: "center",
 	},
 	textInputContainer: {
