@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import UserInput from "../components/StartScreen/UserInput";
 import EnteredChoices from "../components/StartScreen/EnteredChoices";
+import ActionButtons from "../components/StartScreen/ActionButtons";
 
 const StartScreen = props => {
 	const [enteredChoice, setEnteredChoice] = useState("");
@@ -10,7 +11,7 @@ const StartScreen = props => {
 		setEnteredChoice(enteredText);
 	};
 
-	const onPressHandler = () => {
+	const onSubmitHandler = () => {
 		if (enteredChoice.trim() === "") {
 			return;
 		}
@@ -29,9 +30,10 @@ const StartScreen = props => {
 			<UserInput
 				enteredChoice={enteredChoice}
 				onChangeTextHandler={onChangeTextHandler}
-				onPressHandler={onPressHandler}
+				onSubmitHandler={onSubmitHandler}
 			/>
 			<EnteredChoices choices={props.choices} onDelete={props.onDelete} />
+			<ActionButtons />
 		</View>
 	);
 };

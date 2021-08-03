@@ -13,7 +13,7 @@ const UserInput = props => {
 				/>
 			</View>
 			<View style={styles.button}>
-				<Button title="Enter" color="#87CEEB" onPress={props.onPressHandler} />
+				<Button title="Enter" color="#87CEEB" onPress={props.onSubmitHandler} />
 			</View>
 		</View>
 	);
