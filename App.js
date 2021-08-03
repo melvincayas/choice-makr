@@ -10,10 +10,20 @@ export default function App() {
 		setChoices(prevChoices => [...prevChoices, enteredChoice]);
 	};
 
+	const onDeleteChoiceHandler = deletedChoice => {
+		setChoices(prevChoices =>
+			prevChoices.filter(choice => choice.id !== deletedChoice)
+		);
+	};
+
 	return (
 		<View style={styles.appContainer}>
 			<Header />
-			<StartScreen choices={choices} onSubmit={onSubmitChoiceHandler} />
+			<StartScreen
+				choices={choices}
+				onDelete={onDeleteChoiceHandler}
+				onSubmit={onSubmitChoiceHandler}
+			/>
 		</View>
 	);
 }

@@ -1,11 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 const ChoiceCard = props => {
+	const onPressHandler = () => {
+		props.onDelete(props.choice.id);
+	};
+
 	return (
-		<View style={styles.choiceContainer}>
-			<Text style={styles.choiceText}>{props.choice}</Text>
-		</View>
+		<TouchableOpacity style={styles.choiceContainer} onPress={onPressHandler}>
+			<Text style={styles.choiceText}>{props.choice.text}</Text>
+		</TouchableOpacity>
 	);
 };
 
