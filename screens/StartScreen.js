@@ -46,7 +46,7 @@ const StartScreen = props => {
 				</View>
 			</View>
 			<View>
-				<TitleText>Choices</TitleText>
+				<TitleText style={styles.scrollViewHeader}>Choices</TitleText>
 				<ScrollView>
 					{props.choices.map(choice => (
 						<Text key={choice.id}>{choice.text}</Text>
@@ -60,6 +60,7 @@ const StartScreen = props => {
 const styles = StyleSheet.create({
 	userInputContainer: {
 		alignItems: "center",
+		marginBottom: 40,
 	},
 	textInputContainer: {
 		flexDirection: "row",
@@ -77,10 +78,14 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		overflow: "hidden",
-		width: "35%",
+		width: "30%",
 		borderRadius: 10,
 		borderColor: "black",
 		borderWidth: 1,
+		paddingVertical: 1,
+	},
+	scrollViewHeader: {
+		textAlign: "center",
 	},
 });
 
