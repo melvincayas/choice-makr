@@ -8,6 +8,7 @@ import {
 	ScrollView,
 } from "react-native";
 import TitleText from "../components/TitleText";
+import ChoiceCard from "../components/ChoiceCard";
 
 const StartScreen = props => {
 	const [enteredChoice, setEnteredChoice] = useState("");
@@ -47,9 +48,9 @@ const StartScreen = props => {
 			</View>
 			<View>
 				<TitleText style={styles.scrollViewHeader}>Choices</TitleText>
-				<ScrollView>
+				<ScrollView contentContainerStyle={styles.scrollViewContainer}>
 					{props.choices.map(choice => (
-						<Text key={choice.id}>{choice.text}</Text>
+						<ChoiceCard key={choice.id} choice={choice.text} />
 					))}
 				</ScrollView>
 			</View>
@@ -86,6 +87,10 @@ const styles = StyleSheet.create({
 	},
 	scrollViewHeader: {
 		textAlign: "center",
+		marginBottom: 16,
+	},
+	scrollViewContainer: {
+		alignItems: "center",
 	},
 });
 
