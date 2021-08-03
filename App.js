@@ -6,8 +6,8 @@ import Header from "./components/Header";
 export default function App() {
 	const [choices, setChoices] = useState([]);
 
-	const onSubmitChoiceHandler = choice => {
-		setChoices(prevChoices => [...prevChoices, choice]);
+	const onSubmitChoiceHandler = enteredChoice => {
+		setChoices(prevChoices => [...prevChoices, enteredChoice]);
 	};
 
 	return (
