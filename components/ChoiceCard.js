@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import Colors from "../constants/Colors";
 
 const ChoiceCard = props => {
 	const onPressHandler = () => {
@@ -15,17 +17,25 @@ const ChoiceCard = props => {
 
 const styles = StyleSheet.create({
 	choiceContainer: {
-		borderWidth: 1,
-		borderColor: "black",
+		borderColor: Colors.black,
 		borderRadius: 10,
-		width: "80%",
+		borderWidth: 1,
 		marginBottom: 16,
 		paddingHorizontal: 12,
 		paddingVertical: 5,
+		width: "80%",
 	},
 	choiceText: {
 		fontSize: 16,
 	},
 });
+
+ChoiceCard.propTypes = {
+	choice: PropTypes.shape({
+		id: PropTypes.number,
+		text: PropTypes.string,
+	}),
+	onDelete: PropTypes.func,
+};
 
 export default ChoiceCard;
