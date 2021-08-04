@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TitleText from "../TitleText";
+import TitleText from "../UI/TitleText";
 import ChoiceCard from "../UI/ChoiceCard";
 import { View, StyleSheet, ScrollView } from "react-native";
 
