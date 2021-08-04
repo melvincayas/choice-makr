@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import Colors from "../constants/Colors";
+import { Colors } from "../constants/Colors";
 
 const ChoiceCard = props => {
 	const onPressHandler = () => {

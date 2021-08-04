@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import TitleText from "../TitleText";
 import ChoiceCard from "../ChoiceCard";
 import { View, StyleSheet, ScrollView, Button } from "react-native";
-import Colors from "../../constants/Colors";
+import { Colors } from "../../constants/Colors";
 
 const EnteredChoices = props => {
 	return (
