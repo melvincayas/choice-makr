@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 const TitleText = props => {
 	return (
@@ -15,5 +16,13 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 	},
 });
+
+TitleText.propTypes = {
+	children: PropTypes.oneOfType(
+		[PropTypes.arrayOf(PropTypes.node)],
+		PropTypes.node
+	),
+	style: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
 
 export default TitleText;

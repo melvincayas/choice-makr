@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { View, TextInput, StyleSheet, Button } from "react-native";
+import Colors from "../../constants/Colors";
 
 const UserInput = props => {
 	return (
@@ -20,32 +22,38 @@ const UserInput = props => {
 };
 
 const styles = StyleSheet.create({
-	userInputContainer: {
-		alignItems: "center",
-		marginBottom: 40,
+	button: {
+		borderColor: Colors.black,
+		borderRadius: 10,
+		borderWidth: 1,
+		overflow: "hidden",
+		paddingVertical: 1,
+		width: "30%",
+	},
+	textInput: {
+		borderColor: Colors.black,
+		borderRadius: 10,
+		borderWidth: 1,
+		fontSize: 18,
+		paddingHorizontal: 10,
+		paddingVertical: 3,
+		width: "80%",
 	},
 	textInputContainer: {
 		flexDirection: "row",
 		justifyContent: "center",
 		marginVertical: 15,
 	},
-	textInput: {
-		fontSize: 18,
-		borderColor: "black",
-		borderWidth: 1,
-		borderRadius: 10,
-		paddingHorizontal: 10,
-		paddingVertical: 3,
-		width: "80%",
-	},
-	button: {
-		overflow: "hidden",
-		width: "30%",
-		borderRadius: 10,
-		borderColor: "black",
-		borderWidth: 1,
-		paddingVertical: 1,
+	userInputContainer: {
+		alignItems: "center",
+		marginBottom: 40,
 	},
 });
+
+UserInput.propTypes = {
+	enteredChoice: PropTypes.string,
+	onChangeTextHandler: PropTypes.func,
+	onSubmitHandler: PropTypes.func,
+};
 
 export default UserInput;
