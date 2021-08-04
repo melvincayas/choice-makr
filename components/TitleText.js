@@ -18,11 +18,10 @@ const styles = StyleSheet.create({
 });
 
 TitleText.propTypes = {
-	children: PropTypes.oneOfType(
-		[PropTypes.arrayOf(PropTypes.node)],
-		PropTypes.node
+	children: PropTypes.string,
+	style: PropTypes.objectOf(
+		PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 	),
-	style: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default TitleText;
