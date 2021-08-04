@@ -27,16 +27,18 @@ const StartScreen = props => {
 	};
 
 	return (
-		<View>
+		<View style={styles.startScreenContainer}>
 			<UserInput
 				enteredChoice={enteredChoice}
 				onChangeTextHandler={onChangeTextHandler}
 				onSubmitHandler={onSubmitHandler}
 			/>
-			<EnteredChoices choices={props.choices} onDelete={props.onDelete} />
-			<View style={styles.buttonContainer}>
-				<View style={styles.button}>
-					<Button title="Continue" />
+			<View style={styles.choiceView}>
+				<EnteredChoices choices={props.choices} onDelete={props.onDelete} />
+				<View style={styles.buttonContainer}>
+					<View style={styles.button}>
+						<Button title="Continue" />
+					</View>
 				</View>
 			</View>
 		</View>
@@ -51,6 +53,14 @@ const styles = StyleSheet.create({
 	},
 	buttonContainer: {
 		alignItems: "center",
+		marginBottom: 50,
+	},
+	choiceView: {
+		justifyContent: "space-between",
+		flex: 1,
+	},
+	startScreenContainer: {
+		flex: 1,
 	},
 });
 

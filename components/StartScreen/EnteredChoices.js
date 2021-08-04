@@ -22,6 +22,9 @@ const EnteredChoices = props => {
 };
 
 const styles = StyleSheet.create({
+	mainContainer: {
+		flex: 1,
+	},
 	scrollViewContainer: {
 		alignItems: "center",
 	},
