@@ -46,7 +46,12 @@ const styles = StyleSheet.create({
 });
 
 EnteredChoices.propTypes = {
-	choices: PropTypes.arrayOf(PropTypes.string),
+	choices: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.number,
+			text: PropTypes.string,
+		})
+	),
 	onDelete: PropTypes.func,
 };
 
