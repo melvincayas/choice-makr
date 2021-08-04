@@ -5,31 +5,19 @@ import { Colors } from "../../constants/Colors";
 
 const UserInput = props => {
 	return (
-		<View style={styles.userInputContainer}>
-			<View style={styles.textInputContainer}>
-				<TextInput
-					style={styles.textInput}
-					value={props.enteredChoice}
-					onChangeText={props.onChangeTextHandler}
-					placeholder="Enter choices"
-				/>
-			</View>
-			<View style={styles.button}>
-				<Button title="Enter" color="#87CEEB" onPress={props.onSubmitHandler} />
-			</View>
+		<View style={styles.textInputContainer}>
+			<TextInput
+				{...props}
+				style={{ ...styles.textInput, ...props.style }}
+				value={props.enteredValue}
+				onChangeText={props.onChangeTextHandler}
+				placeholder={props.placeholder}
+			/>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
-	button: {
-		borderColor: Colors.black,
-		borderRadius: 10,
-		borderWidth: 1,
-		overflow: "hidden",
-		paddingVertical: 1,
-		width: "30%",
-	},
 	textInput: {
 		borderColor: Colors.black,
 		borderRadius: 10,
@@ -37,23 +25,22 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		paddingHorizontal: 10,
 		paddingVertical: 3,
-		width: "80%",
 	},
 	textInputContainer: {
 		flexDirection: "row",
 		justifyContent: "center",
 		marginVertical: 15,
 	},
-	userInputContainer: {
-		alignItems: "center",
-		marginBottom: 40,
-	},
 });
 
 UserInput.propTypes = {
-	enteredChoice: PropTypes.string,
+	enteredValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	onChangeTextHandler: PropTypes.func,
 	onSubmitHandler: PropTypes.func,
+	placeholder: PropTypes.string,
+	style: PropTypes.objectOf(
+		PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+	),
 };
 
 export default UserInput;

@@ -28,21 +28,26 @@ const StartScreen = props => {
 
 	return (
 		<View style={styles.startScreenContainer}>
-			<UserInput
-				enteredChoice={enteredChoice}
-				onChangeTextHandler={onChangeTextHandler}
-				onSubmitHandler={onSubmitHandler}
-			/>
+			<View style={styles.userInputContainer}>
+				<UserInput
+					enteredValue={enteredChoice}
+					onChangeTextHandler={onChangeTextHandler}
+					onSubmitHandler={onSubmitHandler}
+					style={styles.userInput}
+					placeholder="Enter Choice"
+				/>
+				<View style={styles.button}>
+					<Button title="Enter" color="#87CEEB" onPress={onSubmitHandler} />
+				</View>
+			</View>
 			<View style={styles.choiceView}>
 				<EnteredChoices choices={props.choices} onDelete={props.onDelete} />
-				<View style={styles.buttonContainer}>
-					<View style={styles.button}>
-						<Button
-							title="Continue"
-							color={Colors.buttonSuccess}
-							onPress={props.onFinish}
-						/>
-					</View>
+				<View style={styles.button}>
+					<Button
+						title="Continue"
+						color={Colors.buttonSuccess}
+						onPress={props.onFinish}
+					/>
 				</View>
 			</View>
 		</View>
@@ -63,10 +68,19 @@ const styles = StyleSheet.create({
 	},
 	choiceView: {
 		justifyContent: "space-between",
+		alignItems: "center",
 		flex: 1,
+		marginBottom: 50,
 	},
 	startScreenContainer: {
 		flex: 1,
+	},
+	userInputContainer: {
+		alignItems: "center",
+		marginBottom: 40,
+	},
+	userInput: {
+		width: "80%",
 	},
 });
 
