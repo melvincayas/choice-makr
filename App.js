@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import StartScreen from "./screens/StartScreen";
 import Header from "./components/Header";
+import StartScreen from "./screens/StartScreen";
+import NumberOfChoicesScreen from "./screens/NumberOfChoicesScreen";
 
 export default function App() {
 	const [choices, setChoices] = useState([]);
+	const [isFinishedEnteringChoices, setIsFinishedEnteringChoices] =
+		useState(false);
 
 	const onSubmitChoiceHandler = enteredChoice => {
 		setChoices(prevChoices => [...prevChoices, enteredChoice]);
@@ -16,14 +19,25 @@ export default function App() {
 		);
 	};
 
+	const onFinishEnteringChoices = () => {
+		setIsFinishedEnteringChoices(prevState => !prevState);
+	};
+
+	const screenProgression = isFinishedEnteringChoices ? (
+		<NumberOfChoicesScreen />
+	) : (
+		<StartScreen
+			choices={choices}
+			onDelete={onDeleteChoiceHandler}
+			onSubmit={onSubmitChoiceHandler}
+			onFinish={onFinishEnteringChoices}
+		/>
+	);
+
 	return (
 		<View style={styles.appContainer}>
 			<Header />
-			<StartScreen
-				choices={choices}
-				onDelete={onDeleteChoiceHandler}
-				onSubmit={onSubmitChoiceHandler}
-			/>
+			{screenProgression}
 		</View>
 	);
 }

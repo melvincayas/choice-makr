@@ -37,7 +37,11 @@ const StartScreen = props => {
 				<EnteredChoices choices={props.choices} onDelete={props.onDelete} />
 				<View style={styles.buttonContainer}>
 					<View style={styles.button}>
-						<Button title="Continue" />
+						<Button
+							title="Continue"
+							color={Colors.buttonSuccess}
+							onPress={props.onFinish}
+						/>
 					</View>
 				</View>
 			</View>
@@ -48,7 +52,9 @@ const StartScreen = props => {
 const styles = StyleSheet.create({
 	button: {
 		borderColor: Colors.black,
+		borderRadius: 10,
 		borderWidth: 1,
+		overflow: "hidden",
 		width: "30%",
 	},
 	buttonContainer: {
@@ -72,6 +78,7 @@ StartScreen.propTypes = {
 		})
 	),
 	onDelete: PropTypes.func,
+	onFinish: PropTypes.func,
 	onSubmit: PropTypes.func,
 };
 
