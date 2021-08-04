@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import Header from "./components/Header";
+import Header from "./components/UI/Header";
 import StartScreen from "./screens/StartScreen";
 import NumberOfChoicesScreen from "./screens/NumberOfChoicesScreen";
 

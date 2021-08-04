@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TitleText from "../TitleText";
-import ChoiceCard from "../ChoiceCard";
+import ChoiceCard from "../UI/ChoiceCard";
 import { View, StyleSheet, ScrollView } from "react-native";
 
 const EnteredChoices = props => {

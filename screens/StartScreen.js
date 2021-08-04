@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { View, Button, StyleSheet } from "react-native";
-import UserInput from "../components/StartScreen/UserInput";
+import UserInput from "../components/UI/UserInput";
 import EnteredChoices from "../components/StartScreen/EnteredChoices";
 import { Colors } from "../constants/Colors";
 
