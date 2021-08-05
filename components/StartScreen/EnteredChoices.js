@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import TitleText from "../UI/TitleText";
 import ChoiceCard from "../UI/ChoiceCard";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 
 const EnteredChoices = props => {
 	return (
@@ -10,11 +10,12 @@ const EnteredChoices = props => {
 			<TitleText style={styles.scrollViewHeader}>Choices</TitleText>
 			<ScrollView contentContainerStyle={styles.scrollViewContainer}>
 				{props.choices.map(choice => (
-					<ChoiceCard
-						key={choice.id}
-						choice={choice}
-						onDelete={props.onDelete}
-					/>
+					<TouchableOpacity
+						style={styles.opacityContainer}
+						onPress={() => props.onDelete(choice.id)}
+					>
+						<ChoiceCard key={choice.id} choice={choice} />
+					</TouchableOpacity>
 				))}
 			</ScrollView>
 		</View>
@@ -24,6 +25,10 @@ const EnteredChoices = props => {
 const styles = StyleSheet.create({
 	mainContainer: {
 		flex: 1,
+		width: "100%",
+	},
+	opacityContainer: {
+		alignItems: "center",
 		width: "100%",
 	},
 	scrollViewContainer: {

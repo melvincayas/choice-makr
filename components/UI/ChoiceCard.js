@@ -1,17 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Colors } from "../../constants/Colors";
 
 const ChoiceCard = props => {
-	const onPressHandler = () => {
-		props.onDelete(props.choice.id);
-	};
-
 	return (
-		<TouchableOpacity style={styles.choiceContainer} onPress={onPressHandler}>
+		<View style={styles.choiceContainer}>
 			<Text style={styles.choiceText}>{props.choice.text}</Text>
-		</TouchableOpacity>
+		</View>
 	);
 };
 
@@ -35,7 +31,6 @@ ChoiceCard.propTypes = {
 		id: PropTypes.number,
 		text: PropTypes.string,
 	}),
-	onDelete: PropTypes.func,
 };
 
 export default ChoiceCard;
