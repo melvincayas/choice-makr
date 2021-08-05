@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { View, Button, StyleSheet } from "react-native";
 import UserInput from "../components/UI/UserInput";
 import EnteredChoices from "../components/StartScreen/EnteredChoices";
-import { Colors } from "../constants/Colors";
+import Colors from "../constants/Colors";
 
 const StartScreen = props => {
 	const [enteredChoice, setEnteredChoice] = useState("");

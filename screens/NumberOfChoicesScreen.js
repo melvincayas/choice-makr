@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { View, Text, StyleSheet, Button } from "react-native";
 import UserInput from "../components/UI/UserInput";
 import { buttonStyles } from "../constants/Styles";
-import { Colors } from "../constants/Colors";
+import Colors from "../constants/Colors";
 
 const NumberOfChoicesScreen = props => {
 	const [enteredNumber, setEnteredNumber] = useState(null);

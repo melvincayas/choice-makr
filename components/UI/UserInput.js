@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { View, TextInput, StyleSheet } from "react-native";
-import { Colors } from "../../constants/Colors";
+import Colors from "../../constants/Colors";
 
 const UserInput = props => {
 	return (
