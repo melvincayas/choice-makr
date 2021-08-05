@@ -3,10 +3,12 @@ import { StyleSheet, View } from "react-native";
 import Header from "./components/UI/Header";
 import StartScreen from "./screens/StartScreen";
 import NumberOfChoicesScreen from "./screens/NumberOfChoicesScreen";
+import ResultsScreen from "./screens/ResultsScreen";
 
 const initialState = {
 	choices: [],
-	isFinishedEnteringChoices: false,
+	isAtNumberOfChoicesScreen: false,
+	isAtResultsScreen: false,
 	numberOfChoices: null,
 };
 
@@ -25,16 +27,12 @@ const appStateReducer = (state = initialState, action) => {
 		case "FINISHED_ENTERING":
 			return {
 				...state,
-				isFinishedEnteringChoices: true,
-			};
-		case "RESET":
-			return {
-				choices: [],
-				isFinishedEnteringChoices: false,
+				isAtNumberOfChoicesScreen: true,
 			};
 		case "NUMBER_OF_CHOICES":
 			return {
 				...state,
+				isAtResultsScreen: true,
 				numberOfChoices: action.payload,
 			};
 		default:
@@ -65,12 +63,7 @@ export default function App() {
 		dispatch({ type: "NUMBER_OF_CHOICES", payload: enteredNumber });
 	};
 
-	const screenProgression = appState.isFinishedEnteringChoices ? (
-		<NumberOfChoicesScreen
-			onReset={onResetChoices}
-			onConfirm={onConfirmNumberOfChoices}
-		/>
-	) : (
+	let screenProgression = (
 		<StartScreen
 			choices={appState.choices}
 			onDelete={onDeleteChoiceHandler}
@@ -78,6 +71,19 @@ export default function App() {
 			onFinish={onFinishEnteringChoices}
 		/>
 	);
+
+	if (appState.isAtNumberOfChoicesScreen) {
+		screenProgression = (
+			<NumberOfChoicesScreen
+				onReset={onResetChoices}
+				onConfirm={onConfirmNumberOfChoices}
+			/>
+		);
+	}
+
+	if (appState.isAtResultsScreen) {
+		screenProgression = <ResultsScreen number={+appState.numberOfChoices} />;
+	}
 
 	return (
 		<View style={styles.appContainer}>

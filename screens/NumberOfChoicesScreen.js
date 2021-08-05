@@ -13,7 +13,7 @@ const NumberOfChoicesScreen = props => {
 	};
 
 	const onConfirmHandler = () => {
-		props.onSelect(enteredNumber);
+		props.onConfirm(enteredNumber);
 	};
 
 	return (
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
 });
 
 NumberOfChoicesScreen.propTypes = {
-	onSelect: PropTypes.func,
+	onConfirm: PropTypes.func,
 	onReset: PropTypes.func,
 };
 
