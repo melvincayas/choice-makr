@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, TextInput, StyleSheet, Button } from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
 import { Colors } from "../../constants/Colors";
 
 const UserInput = props => {
@@ -11,7 +11,6 @@ const UserInput = props => {
 				style={{ ...styles.textInput, ...props.style }}
 				value={props.enteredValue}
 				onChangeText={props.onChangeTextHandler}
-				placeholder={props.placeholder}
 			/>
 		</View>
 	);
@@ -37,7 +36,6 @@ UserInput.propTypes = {
 	enteredValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	onChangeTextHandler: PropTypes.func,
 	onSubmitHandler: PropTypes.func,
-	placeholder: PropTypes.string,
 	style: PropTypes.objectOf(
 		PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 	),

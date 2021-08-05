@@ -7,6 +7,7 @@ import NumberOfChoicesScreen from "./screens/NumberOfChoicesScreen";
 const initialState = {
 	choices: [],
 	isFinishedEnteringChoices: false,
+	numberOfChoices: null,
 };
 
 const appStateReducer = (state = initialState, action) => {
@@ -30,6 +31,11 @@ const appStateReducer = (state = initialState, action) => {
 			return {
 				choices: [],
 				isFinishedEnteringChoices: false,
+			};
+		case "NUMBER_OF_CHOICES":
+			return {
+				...state,
+				numberOfChoices: action.payload,
 			};
 		default:
 			return initialState;
@@ -55,8 +61,15 @@ export default function App() {
 		dispatch({ type: "RESET" });
 	};
 
+	const onConfirmNumberOfChoices = enteredNumber => {
+		dispatch({ type: "NUMBER_OF_CHOICES", payload: enteredNumber });
+	};
+
 	const screenProgression = appState.isFinishedEnteringChoices ? (
-		<NumberOfChoicesScreen onReset={onResetChoices} />
+		<NumberOfChoicesScreen
+			onReset={onResetChoices}
+			onConfirm={onConfirmNumberOfChoices}
+		/>
 	) : (
 		<StartScreen
 			choices={appState.choices}
