@@ -9,3 +9,10 @@ export const buttonStyles = {
 		width: "30%",
 	},
 };
+
+export const textStyles = {
+	generic: {
+		fontSize: 18,
+		textAlign: "center",
+	},
+};
