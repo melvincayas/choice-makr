@@ -9,7 +9,7 @@ const initialState = {
 	choices: [],
 	isAtNumberOfChoicesScreen: false,
 	isAtResultsScreen: false,
-	numberOfChoices: null,
+	numberOfChoicesToChoose: null,
 };
 
 const appStateReducer = (state = initialState, action) => {
@@ -33,7 +33,7 @@ const appStateReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isAtResultsScreen: true,
-				numberOfChoices: action.payload,
+				numberOfChoicesToChoose: action.payload,
 			};
 		default:
 			return initialState;
@@ -82,7 +82,12 @@ export default function App() {
 	}
 
 	if (appState.isAtResultsScreen) {
-		screenProgression = <ResultsScreen number={+appState.numberOfChoices} />;
+		screenProgression = (
+			<ResultsScreen
+				choices={appState.choices}
+				numberOfChoicesToChoose={+appState.numberOfChoicesToChoose}
+			/>
+		);
 	}
 
 	return (
