@@ -62,25 +62,21 @@ const styles = StyleSheet.create({
 		overflow: "hidden",
 		width: "30%",
 	},
-	buttonContainer: {
-		alignItems: "center",
-		marginBottom: 50,
-	},
 	choiceView: {
-		justifyContent: "space-between",
 		alignItems: "center",
 		flex: 1,
+		justifyContent: "space-between",
 		marginBottom: 50,
 	},
 	startScreenContainer: {
 		flex: 1,
 	},
+	userInput: {
+		width: "80%",
+	},
 	userInputContainer: {
 		alignItems: "center",
 		marginBottom: 40,
-	},
-	userInput: {
-		width: "80%",
 	},
 });
 
