@@ -36,7 +36,6 @@ const ResultsScreen = props => {
 
 	return (
 		<View>
-			<Text>Test</Text>
 			{pickedChoices.map(choice => (
 				<Text key={choice.id}>{choice.text}</Text>
 			))}
