@@ -86,6 +86,7 @@ export default function App() {
 			<ResultsScreen
 				choices={appState.choices}
 				numberOfChoicesToChoose={+appState.numberOfChoicesToChoose}
+				onReset={onResetChoices}
 			/>
 		);
 	}

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { View, Text } from "react-native";
+import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
+import ChoiceCard from "../components/UI/ChoiceCard";
+import { buttonStyles, textStyles } from "../constants/Styles";
+import Colors from "../constants/Colors";
 
 const getOneRandomNumber = choiceLength => {
 	return Math.floor(Math.random() * choiceLength);
@@ -35,13 +38,50 @@ const ResultsScreen = props => {
 	);
 
 	return (
-		<View>
-			{pickedChoices.map(choice => (
-				<Text key={choice.id}>{choice.text}</Text>
-			))}
+		<View style={styles.mainContainer}>
+			<Text style={{ ...textStyles.generic, ...styles.resultHeader }}>
+				Stick with:
+			</Text>
+			<View style={styles.resultContainer}>
+				<ScrollView contentContainerStyle={styles.scrollViewContainer}>
+					{pickedChoices.map(choice => (
+						<ChoiceCard key={choice.id} choice={choice} />
+					))}
+				</ScrollView>
+				<View style={styles.buttonContainer}>
+					<View style={buttonStyles.button}>
+						<Button
+							title="Again?"
+							color={Colors.buttonCancel}
+							onPress={props.onReset}
+						/>
+					</View>
+				</View>
+			</View>
 		</View>
 	);
 };
+
+const styles = StyleSheet.create({
+	buttonContainer: {
+		alignItems: "center",
+	},
+	mainContainer: {
+		flex: 1,
+	},
+	resultContainer: {
+		justifyContent: "space-between",
+		flex: 1,
+		marginBottom: 50,
+	},
+	resultHeader: {
+		marginVertical: 30,
+	},
+	scrollViewContainer: {
+		alignItems: "center",
+		width: "100%",
+	},
+});
 
 ResultsScreen.propTypes = {
 	choices: PropTypes.arrayOf(
@@ -51,6 +91,7 @@ ResultsScreen.propTypes = {
 		})
 	),
 	numberOfChoicesToChoose: PropTypes.number,
+	onReset: PropTypes.func,
 };
 
 export default ResultsScreen;

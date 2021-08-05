@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { View, Text, StyleSheet, Button } from "react-native";
 import UserInput from "../components/UI/UserInput";
-import { buttonStyles } from "../constants/Styles";
+import { buttonStyles, textStyles } from "../constants/Styles";
 import Colors from "../constants/Colors";
 
 const NumberOfChoicesScreen = props => {
@@ -18,7 +18,7 @@ const NumberOfChoicesScreen = props => {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.questionText}>
+			<Text style={textStyles.generic}>
 				How many choices do you need to pick?
 			</Text>
 			<UserInput
@@ -54,10 +54,6 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		marginTop: 30,
-	},
-	questionText: {
-		fontSize: 18,
-		textAlign: "center",
 	},
 	userInput: {
 		textAlign: "center",
