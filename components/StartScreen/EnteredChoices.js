@@ -8,7 +8,7 @@ import { scrollViewStyles } from "../../constants/Styles";
 const EnteredChoices = props => {
 	return (
 		<View style={styles.mainContainer}>
-			<TitleText style={styles.scrollViewHeader}>Choices</TitleText>
+			<TitleText style={scrollViewStyles.scrollViewHeader}>Choices</TitleText>
 			<ScrollView contentContainerStyle={scrollViewStyles.scrollViewContainer}>
 				{props.choices.map(choice => (
 					<TouchableOpacity
@@ -32,10 +32,6 @@ const styles = StyleSheet.create({
 	opacityContainer: {
 		alignItems: "center",
 		width: "100%",
-	},
-	scrollViewHeader: {
-		marginBottom: 16,
-		textAlign: "center",
 	},
 });
 
