@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { View, Button, StyleSheet } from "react-native";
+import { View, Button, StyleSheet, Alert } from "react-native";
 import UserInput from "../components/UI/UserInput";
 import EnteredChoices from "../components/StartScreen/EnteredChoices";
 import Colors from "../constants/Colors";
@@ -14,6 +14,9 @@ const StartScreen = props => {
 
 	const onSubmitHandler = () => {
 		if (enteredChoice.trim() === "") {
+			Alert.alert("Whoops!", "Please enter a choice.", [
+				{ text: "Okay", style: "cancel" },
+			]);
 			return;
 		}
 
