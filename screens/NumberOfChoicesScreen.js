@@ -74,7 +74,9 @@ const NumberOfChoicesScreen = props => {
 				</View>
 			</View>
 			<View style={styles.choiceContainer}>
-				<TitleText style={scrollViewStyles.scrollViewHeader}>Choices</TitleText>
+				<TitleText
+					style={scrollViewStyles.scrollViewHeader}
+				>{`Choices (${props.choices.length})`}</TitleText>
 				<ScrollView
 					contentContainerStyle={scrollViewStyles.scrollViewContainer}
 				>

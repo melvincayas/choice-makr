@@ -8,7 +8,9 @@ import { scrollViewStyles } from "../../constants/Styles";
 const EnteredChoices = props => {
 	return (
 		<View style={styles.mainContainer}>
-			<TitleText style={scrollViewStyles.scrollViewHeader}>Choices</TitleText>
+			<TitleText
+				style={scrollViewStyles.scrollViewHeader}
+			>{`Choices (${props.choices.length})`}</TitleText>
 			<ScrollView contentContainerStyle={scrollViewStyles.scrollViewContainer}>
 				{props.choices.map(choice => (
 					<TouchableOpacity
