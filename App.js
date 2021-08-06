@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Alert } from "react-native";
 import Header from "./components/UI/Header";
 import StartScreen from "./screens/StartScreen";
 import NumberOfChoicesScreen from "./screens/NumberOfChoicesScreen";
@@ -58,9 +58,16 @@ export default function App() {
 	};
 
 	const onFinishEnteringChoices = () => {
+		if (appState.choices.length === 1) {
+			return Alert.alert("Whoops!", "Please enter more than 1 choice.", [
+				{ text: "Okay", style: "cancel" },
+			]);
+		}
+
 		if (appState.choices.length === 2) {
 			return dispatch({ type: "SKIP_NUMBER_INPUT" });
 		}
+
 		dispatch({ type: "FINISHED_ENTERING" });
 	};
 
