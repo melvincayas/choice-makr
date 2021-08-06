@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { View, Text, StyleSheet, Button, ScrollView } from "react-native";
+import {
+	View,
+	Text,
+	StyleSheet,
+	Button,
+	ScrollView,
+	Alert,
+} from "react-native";
 import ChoiceCard from "../components/UI/ChoiceCard";
 import UserInput from "../components/UI/UserInput";
 import TitleText from "../components/UI/TitleText";
@@ -15,10 +22,27 @@ const NumberOfChoicesScreen = props => {
 	const [enteredNumber, setEnteredNumber] = useState(null);
 
 	const onChangeTextHandler = enteredValue => {
-		setEnteredNumber(enteredValue);
+		setEnteredNumber(enteredValue.replace(/[^0-9]/g, ""));
 	};
 
 	const onConfirmHandler = () => {
+		if (isNaN(enteredNumber) || !enteredNumber) {
+			return Alert.alert("Whoops!", "Please enter a number", [
+				{ text: "Okay", style: "cancel" },
+			]);
+		}
+
+		if (parseInt(enteredNumber) >= props.choices.length) {
+			return Alert.alert(
+				"Whoops!",
+				"Please put a number less than your total choices."
+			);
+		}
+
+		if (parseInt(enteredNumber) === 0) {
+			return Alert.alert("Whoops!", "Please put a number greater than 0.");
+		}
+
 		props.onConfirm(enteredNumber);
 	};
 
