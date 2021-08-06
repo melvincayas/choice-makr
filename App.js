@@ -75,6 +75,7 @@ export default function App() {
 	if (appState.isAtNumberOfChoicesScreen) {
 		screenProgression = (
 			<NumberOfChoicesScreen
+				choices={appState.choices}
 				onReset={onResetChoices}
 				onConfirm={onConfirmNumberOfChoices}
 			/>

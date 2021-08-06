@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, ScrollView } from "react-native";
+import ChoiceCard from "../components/UI/ChoiceCard";
 import UserInput from "../components/UI/UserInput";
-import { buttonStyles, textStyles } from "../constants/Styles";
+import TitleText from "../components/UI/TitleText";
+import {
+	buttonStyles,
+	textStyles,
+	scrollViewStyles,
+} from "../constants/Styles";
 import Colors from "../constants/Colors";
 
 const NumberOfChoicesScreen = props => {
@@ -43,6 +49,16 @@ const NumberOfChoicesScreen = props => {
 					/>
 				</View>
 			</View>
+			<View style={styles.choiceContainer}>
+				<TitleText style={scrollViewStyles.scrollViewHeader}>Choices</TitleText>
+				<ScrollView
+					contentContainerStyle={scrollViewStyles.scrollViewContainer}
+				>
+					{props.choices.map(choice => (
+						<ChoiceCard key={choice.id} choice={choice} />
+					))}
+				</ScrollView>
+			</View>
 		</View>
 	);
 };
@@ -51,6 +67,7 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		flexDirection: "row",
 		justifyContent: "space-evenly",
+		marginBottom: 30,
 	},
 	container: {
 		marginTop: 30,
@@ -62,6 +79,12 @@ const styles = StyleSheet.create({
 });
 
 NumberOfChoicesScreen.propTypes = {
+	choices: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.number,
+			text: PropTypes.text,
+		})
+	),
 	onConfirm: PropTypes.func,
 	onReset: PropTypes.func,
 };
