@@ -48,6 +48,12 @@ const ChoicesProvider = props => {
 	const [appState, dispatch] = useReducer(appStateReducer, initialState);
 
 	const onSubmitChoiceHandler = enteredChoice => {
+		if (appState.choices.find(choice => choice.text === enteredChoice.text)) {
+			return Alert.alert("Whoops!", "You've entered that already!", [
+				{ text: "Okay", style: "cancel" },
+			]);
+		}
+
 		dispatch({ type: "ENTERED_CHOICE", payload: enteredChoice });
 	};
 
