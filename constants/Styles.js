@@ -21,4 +21,7 @@ export const scrollViewStyles = {
 	scrollViewContainer: {
 		alignItems: "center",
 	},
+	scrollViewHeader: {
+		marginBottom: 16,
+	},
 };
