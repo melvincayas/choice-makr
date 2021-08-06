@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ChoiceContext } from "../components/store/ChoicesProvider";
 import PropTypes from "prop-types";
 import {
 	View,
@@ -18,8 +19,9 @@ import {
 } from "../constants/Styles";
 import Colors from "../constants/Colors";
 
-const NumberOfChoicesScreen = props => {
+const NumberOfChoicesScreen = () => {
 	const [enteredNumber, setEnteredNumber] = useState(null);
+	const choiceContext = useContext(ChoiceContext);
 
 	const onChangeTextHandler = enteredValue => {
 		setEnteredNumber(enteredValue.replace(/[^0-9]/g, ""));
@@ -32,7 +34,7 @@ const NumberOfChoicesScreen = props => {
 			]);
 		}
 
-		if (parseInt(enteredNumber) >= props.choices.length) {
+		if (parseInt(enteredNumber) >= choiceContext.choices.length) {
 			return Alert.alert(
 				"Whoops!",
 				"Please put a number less than your total choices."
@@ -43,7 +45,7 @@ const NumberOfChoicesScreen = props => {
 			return Alert.alert("Whoops!", "Please put a number greater than 0.");
 		}
 
-		props.onConfirm(enteredNumber);
+		choiceContext.onConfirm(enteredNumber);
 	};
 
 	return (
@@ -62,7 +64,7 @@ const NumberOfChoicesScreen = props => {
 					<Button
 						title="RESET"
 						color={Colors.buttonCancel}
-						onPress={props.onReset}
+						onPress={choiceContext.onReset}
 					/>
 				</View>
 				<View style={buttonStyles.button}>
@@ -76,11 +78,11 @@ const NumberOfChoicesScreen = props => {
 			<View style={styles.choiceContainer}>
 				<TitleText
 					style={scrollViewStyles.scrollViewHeader}
-				>{`Choices (${props.choices.length})`}</TitleText>
+				>{`Choices (${choiceContext.choices.length})`}</TitleText>
 				<ScrollView
 					contentContainerStyle={scrollViewStyles.scrollViewContainer}
 				>
-					{props.choices.map(choice => (
+					{choiceContext.choices.map(choice => (
 						<ChoiceCard key={choice.id} choice={choice} />
 					))}
 				</ScrollView>

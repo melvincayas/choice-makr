@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { View, Button, StyleSheet, Alert, Keyboard } from "react-native";
+import { ChoiceContext } from "../components/store/ChoicesProvider";
 import UserInput from "../components/UI/UserInput";
 import EnteredChoices from "../components/StartScreen/EnteredChoices";
 import Colors from "../constants/Colors";
 
-const StartScreen = props => {
+const StartScreen = () => {
 	const [enteredChoice, setEnteredChoice] = useState("");
+	const choiceContext = useContext(ChoiceContext);
 
 	const onChangeTextHandler = enteredText => {
 		setEnteredChoice(enteredText);
@@ -25,7 +27,7 @@ const StartScreen = props => {
 			text: enteredChoice,
 		};
 
-		props.onSubmit(data);
+		choiceContext.onSubmit(data);
 		setEnteredChoice("");
 		Keyboard.dismiss();
 	};
@@ -44,14 +46,17 @@ const StartScreen = props => {
 					<Button title="Enter" color="#87CEEB" onPress={onSubmitHandler} />
 				</View>
 			</View>
-			{props.choices.length > 0 && (
+			{choiceContext.choices.length > 0 && (
 				<View style={styles.choiceView}>
-					<EnteredChoices choices={props.choices} onDelete={props.onDelete} />
+					<EnteredChoices
+						choices={choiceContext.choices}
+						onDelete={choiceContext.onDelete}
+					/>
 					<View style={styles.button}>
 						<Button
 							title="Continue"
 							color={Colors.buttonSuccess}
-							onPress={props.onFinish}
+							onPress={choiceContext.onFinish}
 						/>
 					</View>
 				</View>

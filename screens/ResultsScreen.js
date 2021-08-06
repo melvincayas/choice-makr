@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ChoiceContext } from "../components/store/ChoicesProvider";
 import PropTypes from "prop-types";
 import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
 import ChoiceCard from "../components/UI/ChoiceCard";
@@ -29,15 +30,17 @@ const getMultipleRandomNumbers = (numberOfChoicesToChoose, choiceLength) => {
 	return randomNumbers.sort();
 };
 
-const ResultsScreen = props => {
+const ResultsScreen = () => {
+	const choiceContext = useContext(ChoiceContext);
+
 	const randomNumbers = useState(
 		getMultipleRandomNumbers(
-			props.numberOfChoicesToChoose,
-			props.choices.length
+			choiceContext.numberOfChoicesToChoose,
+			choiceContext.choices.length
 		)
 	)[0];
 
-	const pickedChoices = props.choices.filter((choice, index) =>
+	const pickedChoices = choiceContext.choices.filter((choice, index) =>
 		randomNumbers.includes(index)
 	);
 
@@ -59,7 +62,7 @@ const ResultsScreen = props => {
 						<Button
 							title="Again?"
 							color={Colors.buttonCancel}
-							onPress={props.onReset}
+							onPress={choiceContext.onReset}
 						/>
 					</View>
 				</View>

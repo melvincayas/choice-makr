@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ChoiceContext } from "../store/ChoicesProvider";
 import PropTypes from "prop-types";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import TitleText from "../UI/TitleText";
 import ChoiceCard from "../UI/ChoiceCard";
 import { scrollViewStyles } from "../../constants/Styles";
 
-const EnteredChoices = props => {
+const EnteredChoices = () => {
+	const choiceContext = useContext(ChoiceContext);
+
 	return (
 		<View style={styles.mainContainer}>
 			<TitleText
 				style={scrollViewStyles.scrollViewHeader}
-			>{`Choices (${props.choices.length})`}</TitleText>
+			>{`Choices (${choiceContext.choices.length})`}</TitleText>
 			<ScrollView contentContainerStyle={scrollViewStyles.scrollViewContainer}>
-				{props.choices.map(choice => (
+				{choiceContext.choices.map(choice => (
 					<TouchableOpacity
 						key={choice.id}
 						style={styles.opacityContainer}
-						onPress={() => props.onDelete(choice.id)}
+						onPress={() => choiceContext.onDelete(choice.id)}
 					>
 						<ChoiceCard key={choice.id} choice={choice} />
 					</TouchableOpacity>
