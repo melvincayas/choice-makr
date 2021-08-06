@@ -35,6 +35,12 @@ const appStateReducer = (state = initialState, action) => {
 				isAtResultsScreen: true,
 				numberOfChoicesToChoose: action.payload,
 			};
+		case "SKIP_NUMBER_INPUT":
+			return {
+				...state,
+				isAtResultsScreen: true,
+				numberOfChoicesToChoose: 1,
+			};
 		default:
 			return initialState;
 	}
@@ -52,6 +58,9 @@ export default function App() {
 	};
 
 	const onFinishEnteringChoices = () => {
+		if (appState.choices.length === 2) {
+			return dispatch({ type: "SKIP_NUMBER_INPUT" });
+		}
 		dispatch({ type: "FINISHED_ENTERING" });
 	};
 
