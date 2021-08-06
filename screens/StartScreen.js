@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { View, Button, StyleSheet } from "react-native";
+import { View, Button, StyleSheet, ShadowPropTypesIOS } from "react-native";
 import UserInput from "../components/UI/UserInput";
 import EnteredChoices from "../components/StartScreen/EnteredChoices";
 import Colors from "../constants/Colors";
@@ -40,16 +40,18 @@ const StartScreen = props => {
 					<Button title="Enter" color="#87CEEB" onPress={onSubmitHandler} />
 				</View>
 			</View>
-			<View style={styles.choiceView}>
-				<EnteredChoices choices={props.choices} onDelete={props.onDelete} />
-				<View style={styles.button}>
-					<Button
-						title="Continue"
-						color={Colors.buttonSuccess}
-						onPress={props.onFinish}
-					/>
+			{props.choices.length > 0 && (
+				<View style={styles.choiceView}>
+					<EnteredChoices choices={props.choices} onDelete={props.onDelete} />
+					<View style={styles.button}>
+						<Button
+							title="Continue"
+							color={Colors.buttonSuccess}
+							onPress={props.onFinish}
+						/>
+					</View>
 				</View>
-			</View>
+			)}
 		</View>
 	);
 };
