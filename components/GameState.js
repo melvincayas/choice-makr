@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ChoiceContext } from "./store/ChoicesProvider";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Header from "./UI/Header";
 import StartScreen from "../screens/StartScreen";
 import NumberOfChoicesScreen from "../screens/NumberOfChoicesScreen";
