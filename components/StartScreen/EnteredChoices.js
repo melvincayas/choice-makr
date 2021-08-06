@@ -11,6 +11,7 @@ const EnteredChoices = props => {
 			<ScrollView contentContainerStyle={styles.scrollViewContainer}>
 				{props.choices.map(choice => (
 					<TouchableOpacity
+						key={choice.id}
 						style={styles.opacityContainer}
 						onPress={() => props.onDelete(choice.id)}
 					>
