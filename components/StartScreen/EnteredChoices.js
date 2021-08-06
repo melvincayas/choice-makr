@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import TitleText from "../UI/TitleText";
 import ChoiceCard from "../UI/ChoiceCard";
-import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { scrollViewStyles } from "../../constants/Styles";
 
 const EnteredChoices = props => {
 	return (
 		<View style={styles.mainContainer}>
 			<TitleText style={styles.scrollViewHeader}>Choices</TitleText>
-			<ScrollView contentContainerStyle={styles.scrollViewContainer}>
+			<ScrollView contentContainerStyle={scrollViewStyles.scrollViewContainer}>
 				{props.choices.map(choice => (
 					<TouchableOpacity
 						key={choice.id}
@@ -31,9 +32,6 @@ const styles = StyleSheet.create({
 	opacityContainer: {
 		alignItems: "center",
 		width: "100%",
-	},
-	scrollViewContainer: {
-		alignItems: "center",
 	},
 	scrollViewHeader: {
 		marginBottom: 16,

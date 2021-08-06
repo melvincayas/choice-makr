@@ -16,3 +16,9 @@ export const textStyles = {
 		textAlign: "center",
 	},
 };
+
+export const scrollViewStyles = {
+	scrollViewContainer: {
+		alignItems: "center",
+	},
+};

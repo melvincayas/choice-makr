@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
 import ChoiceCard from "../components/UI/ChoiceCard";
-import { buttonStyles, textStyles } from "../constants/Styles";
+import {
+	buttonStyles,
+	textStyles,
+	scrollViewStyles,
+} from "../constants/Styles";
 import Colors from "../constants/Colors";
 
 const getOneRandomNumber = choiceLength => {
@@ -43,7 +47,9 @@ const ResultsScreen = props => {
 				Stick with:
 			</Text>
 			<View style={styles.resultContainer}>
-				<ScrollView contentContainerStyle={styles.scrollViewContainer}>
+				<ScrollView
+					contentContainerStyle={scrollViewStyles.scrollViewContainer}
+				>
 					{pickedChoices.map(choice => (
 						<ChoiceCard key={choice.id} choice={choice} />
 					))}
@@ -76,10 +82,6 @@ const styles = StyleSheet.create({
 	},
 	resultHeader: {
 		marginVertical: 30,
-	},
-	scrollViewContainer: {
-		alignItems: "center",
-		width: "100%",
 	},
 });
 
