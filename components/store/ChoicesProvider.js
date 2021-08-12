@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import PropTypes from "prop-types";
 import { Alert } from "react-native";
 
 export const ChoiceContext = createContext({});
@@ -100,6 +101,13 @@ const ChoicesProvider = props => {
 			{props.children}
 		</ChoiceContext.Provider>
 	);
+};
+
+ChoicesProvider.propTypes = {
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+	]).isRequired,
 };
 
 export default ChoicesProvider;
