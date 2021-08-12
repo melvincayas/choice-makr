@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { ChoiceContext } from "../components/store/ChoicesProvider";
-import PropTypes from "prop-types";
 import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
 import ChoiceCard from "../components/UI/ChoiceCard";
 import {
@@ -79,24 +78,13 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	resultContainer: {
-		justifyContent: "space-between",
 		flex: 1,
+		justifyContent: "space-between",
 		marginBottom: 50,
 	},
 	resultHeader: {
 		marginVertical: 30,
 	},
 });
-
-ResultsScreen.propTypes = {
-	choices: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.number,
-			text: PropTypes.text,
-		})
-	),
-	numberOfChoicesToChoose: PropTypes.number,
-	onReset: PropTypes.func,
-};
 
 export default ResultsScreen;
