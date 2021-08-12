@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import PropTypes from "prop-types";
 import { View, Button, StyleSheet, Alert, Keyboard } from "react-native";
 import { ChoiceContext } from "../components/store/ChoicesProvider";
 import UserInput from "../components/UI/UserInput";
@@ -90,17 +89,5 @@ const styles = StyleSheet.create({
 		marginBottom: 40,
 	},
 });
-
-StartScreen.propTypes = {
-	choices: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.number,
-			text: PropTypes.string,
-		})
-	),
-	onDelete: PropTypes.func,
-	onFinish: PropTypes.func,
-	onSubmit: PropTypes.func,
-};
 
 export default StartScreen;
