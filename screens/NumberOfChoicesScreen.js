@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { ChoiceContext } from "../components/store/ChoicesProvider";
-import PropTypes from "prop-types";
 import {
 	View,
 	Text,
@@ -105,16 +104,5 @@ const styles = StyleSheet.create({
 		width: "25%",
 	},
 });
-
-NumberOfChoicesScreen.propTypes = {
-	choices: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.number,
-			text: PropTypes.text,
-		})
-	),
-	onConfirm: PropTypes.func,
-	onReset: PropTypes.func,
-};
 
 export default NumberOfChoicesScreen;
