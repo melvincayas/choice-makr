@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { ChoiceContext } from "../store/ChoicesProvider";
-import PropTypes from "prop-types";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import TitleText from "../UI/TitleText";
 import ChoiceCard from "../UI/ChoiceCard";
@@ -39,15 +38,5 @@ const styles = StyleSheet.create({
 		width: "100%",
 	},
 });
-
-EnteredChoices.propTypes = {
-	choices: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.number,
-			text: PropTypes.string,
-		})
-	),
-	onDelete: PropTypes.func,
-};
 
 export default EnteredChoices;
