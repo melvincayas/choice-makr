@@ -9,9 +9,17 @@ React Native project that helps users make a random decision from a list of choi
 
 ## Screenshots
 
+### 1. The Start Screen
+
 <img src="/screenshots/StartScreen.PNG" height="640" alt="The start screen">
+
+### 2. The Number of Choices Screen
+
 <img src="/screenshots/NumberOfChoicesScreen.PNG" height="640" alt="The number of choices screen">
-<img src="/screenshots/ResultScreen.PNG" height="640" alt="The results screen">
+
+### 3. The Results Screen
+
+<img src="/screenshots/ResultsScreen.PNG" height="640" alt="The results screen">
 
 ## Installation
 
