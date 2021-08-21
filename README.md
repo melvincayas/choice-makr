@@ -47,6 +47,13 @@ Or if you want to run the application on your own mobile device:
 npm start
 ```
 
+## Further Implementations
+
+My goal with this project was to build a small and simple application with React Native to reinforce my learning. To further expand on this project I would:
+
+- Update the UI on smaller devices with [Dimensions](https://reactnative.dev/docs/dimensions)
+- Add landscape orientation
+
 ## Contributing
 
 I'm always open to improving my code and the best way to do that is by having others critique it. If you see any bugs or opportunities to refactor, please let me know. It would be **highly appreciated**!
